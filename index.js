@@ -1,7 +1,6 @@
 const { getData, parseData, parseId } = require('./app');
 
 const scrapeOne = (leagueOptions) => {
-
     return getData(leagueOptions)
         .then((idData) => {
             return parseId(idData);
