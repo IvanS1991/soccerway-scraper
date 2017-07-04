@@ -1,0 +1,22 @@
+{
+  "name": "soccerway-scraper",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha -R spec ./tests/tests.js"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "chai": "^4.0.2",
+    "eslint": "^4.1.1",
+    "eslint-config-google": "^0.8.0",
+    "mocha": "^3.4.2",
+    "sinon": "^2.3.6"
+  },
+  "dependencies": {
+    "jsdom": "^11.1.0",
+    "mongodb": "^2.2.29",
+    "node-fetch": "^1.7.1"
+  }
+}
