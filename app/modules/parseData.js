@@ -1,15 +1,15 @@
 const { JSDOM } = require('jsdom');
-const { SELECTORS } = require('./config');
+const { SELECTORS, ERR } = require('./constants');
 
 const parseData = (data, leagueOptions) => {
     if (typeof data !== 'string') {
-        throw new Error('you must pass a string as the first parameter');
+        throw new Error(ERR.PARSE_DATA.INVALID_DATA);
     }
     if (typeof leagueOptions !== 'object'
         || !leagueOptions.hasOwnProperty('country')
         || !leagueOptions.hasOwnProperty('league')
         || !leagueOptions.hasOwnProperty('season')) {
-            throw new Error('you must pass a valid leagueOptions object');
+            throw new Error(ERR.PARSE_DATA.INVALID_OPTIONS);
         }
     const league = {
         country: leagueOptions.country,

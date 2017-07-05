@@ -8,6 +8,7 @@ const moduleFolder = path.join(__dirname, 'modules');
 const app = {};
 
 fs.readdirSync(moduleFolder)
+
     .map((moduleName) => {
         const index = moduleName.search(/.js/);
         return moduleName.slice(0, index);
