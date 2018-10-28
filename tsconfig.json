@@ -1,0 +1,25 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "rootDir": "./src",
+    "noImplicitAny": false,
+    "declaration": false,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "inlineSourceMap": true,
+    "target": "es5",
+    "lib": [
+      "dom",
+      "esnext",
+    ],
+    "allowJs": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "tests/*",
+  ]
+}

@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 
-const { parseId, parseData, getData } = require('../app');
-const { scrapeOne, scrapeMany } = require('../index.js');
+const { parseId, parseData, getData } = require('../dist/modules');
+const { scrapeOne, scrapeMany } = require('../dist');
 
 describe('getData tests', () => {
     it('Should throw if the first parameter is not an object', () => {
