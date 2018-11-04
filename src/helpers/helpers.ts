@@ -19,9 +19,7 @@ export class DOM {
 }
 
 export const getDOMDocument = (htmlData: string): DOM => {
-  const html: string = JSON.parse(htmlData).commands[0].parameters.content;
-
-  const dom: JSDOM = new JSDOM(html, {});
+  const dom: JSDOM = new JSDOM(htmlData, {});
   const window: Window = dom.window;
   const document: HTMLDocument = window.document;
 

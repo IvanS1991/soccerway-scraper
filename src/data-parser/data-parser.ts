@@ -40,7 +40,9 @@ export class DataParser {
           teams: [],
       };
 
-      this.dom = getDOMDocument(data);
+      const html: string = JSON.parse(data).commands[0].parameters.content;
+
+      this.dom = getDOMDocument(html);
 
       const rows: Element[] = this.dom.selectElementArray(this.config.SELECTORS.ROWS);
 
