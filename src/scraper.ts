@@ -1,7 +1,7 @@
 import { Parser } from './data-parser';
 import { DataFetcher } from './data-fetcher';
 
-import * as config from './config.json';
+import { config } from './config';
 
 import { ILeagueOptions, ILeaguePeriod, ILeagueDataOutput, IConfig } from './models';
 
@@ -31,11 +31,7 @@ export class SoccerwayScraper {
     const promises: Promise<ILeagueDataOutput>[] = [];
 
     leagueOptions.forEach((options: ILeagueOptions) => {
-      const country: string = options.country;
-      const league: string = options.league;
-      const season: string = options.season;
-      const promise: Promise<ILeagueDataOutput> = this.scrapeOne({ country, league, season });
-      promises.push(promise);
+      promises.push(this.scrapeOne(options));
     });
     return Promise.all(promises);
   }

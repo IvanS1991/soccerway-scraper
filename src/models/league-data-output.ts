@@ -8,6 +8,6 @@ export interface ITeamStats {
 export interface ILeagueDataOutput {
   country: string;
   league: string;
-  season: string;
+  season: number;
   teams: ITeamStats[],
 }

@@ -9,18 +9,16 @@ export class DataFetcher {
     this.config = config;
   }
 
-  private generateUrl (options: DataOptions): string {
-    let url: string;
+  private seasonString (season: number): string {
+    return String(season) + String(season + 1);
+  }
 
-    if (options.country && options.league && options.season) {
-        const season: string = String(options.season) + String(options.season + 1);
-        url = `${this.config.BASE_URL}${options.country}/${options.league}/${season}`;
-    } else if (options.seasonId && options.roundId) {
-        url = this.config.DATA_URL[0] + options.seasonId + this.config.DATA_URL[1]
-            + options.roundId + this.config.DATA_URL[2];
+  private generateUrl ({ country, league, season, seasonId, roundId }: DataOptions): string {
+    if (country && league && season) {
+        return `${this.config.BASE_URL}${country}/${league}/${this.seasonString(season)}`;
     }
 
-    return url;
+    return `${this.config.DATA_URL[0]}${seasonId}${this.config.DATA_URL[1]}${roundId}${this.config.DATA_URL[2]}`;
   }
 
   public fetch (options: DataOptions) {

@@ -1,18 +1,18 @@
 export interface ILeagueOptions {
   country: string;
   league: string;
-  season: string;
+  season: number;
 }
 
 export interface ILeaguePeriod {
-  seasonId: string;
-  roundId: string;
+  seasonId: number;
+  roundId: number;
 }
 
 export type DataOptions = {
   country?: string;
   league?: string;
-  season?: string;
-  seasonId?: string;
-  roundId?: string;
+  season?: number;
+  seasonId?: number;
+  roundId?: number;
 };

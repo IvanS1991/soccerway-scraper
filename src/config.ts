@@ -1,4 +1,6 @@
-{
+import { IConfig } from './models';
+
+export const config: IConfig = {
   "BASE_URL": "http://int.soccerway.com/national/",
   "DATA_URL": [
     "http://int.soccerway.com/a/block_competition_tables?block_id=page_competition_1_block_competition_tables_7&callback_params={\"season_id\":",
@@ -27,4 +29,4 @@
       "INVALID_HTML": "you must pass a valid html as the only parameter"
     }
   }
-}
+};
