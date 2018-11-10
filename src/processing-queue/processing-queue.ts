@@ -23,12 +23,12 @@ export class ProcessingQueue<T> {
 
   public push (val: T): void {
     this.tail = this.tail || this.getNode(val);
-    
+
     if (!this.head) {
       this.head = this.getNode(val);
     } else {
       const newNode: IQueueNode<T> = this.getNode(val);
-      
+
       newNode.next = this.head;
       this.head = newNode;
     }
@@ -63,7 +63,7 @@ export class ProcessingQueue<T> {
     }
   }
 
-  public processItem (): Promise<T> | Promise<null>{
+  public processItem (): Promise<T> | Promise<null> {
     if (this.isEmpty) {
       return Promise.resolve(null);
     }
@@ -71,8 +71,8 @@ export class ProcessingQueue<T> {
     const item = this.pop();
 
     return this.processCallback(item)
-      .then((item: T) => {
-        this.processedItems.push(item);
+      .then((processedItem: T) => {
+        this.processedItems.push(processedItem);
 
         if (this.size % 10 === 0 && !this.isEmpty) {
           console.log(`${this.size} items left.`);

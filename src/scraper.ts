@@ -30,7 +30,7 @@ export class SoccerwayScraper {
       .then((leagueDataHtml: string) => {
         return this.parser.parseDataHtml(leagueDataHtml, leagueOptions);
       });
-  };
+  }
 
   public scrapeMany (leagueOptions: ILeagueOptions[]): Promise<ILeagueDataOutput[]> {
     const updatedLeagueOptions: ILeagueOptions[] = leagueOptions.reduce((updated, leagueOptionsObj) => {
