@@ -1,7 +1,7 @@
 export interface ILeagueOptions {
   country: string;
   league: string;
-  season: number;
+  season?: number;
 }
 
 export interface ILeaguePeriod {

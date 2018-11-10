@@ -1,5 +1,6 @@
 import { Parser } from './data-parser';
 import { DataFetcher } from './data-fetcher';
+import { ProcessingQueue } from './processing-queue/processing-queue';
 
 import { config } from './config';
 
@@ -9,7 +10,11 @@ export class SoccerwayScraper {
   private parser: Parser;
   private fetcher: DataFetcher;
 
-  constructor(conf: IConfig = config) {
+  constructor(
+    private startYear: number,
+    private endYear: number,
+    conf: IConfig = config
+  ) {
     this.parser = new Parser(conf);
     this.fetcher = new DataFetcher(conf);
   }
@@ -28,11 +33,19 @@ export class SoccerwayScraper {
   };
 
   public scrapeMany (leagueOptions: ILeagueOptions[]): Promise<ILeagueDataOutput[]> {
-    const promises: Promise<ILeagueDataOutput>[] = [];
+    const updatedLeagueOptions: ILeagueOptions[] = leagueOptions.reduce((updated, leagueOptionsObj) => {
+      for (let season = this.startYear; season <= this.endYear; season += 1) {
+        updated.push({ ...leagueOptionsObj, season });
+      }
 
-    leagueOptions.forEach((options: ILeagueOptions) => {
-      promises.push(this.scrapeOne(options));
-    });
-    return Promise.all(promises);
+      return updated;
+    }, []);
+    const queueLimit = Math.abs(this.endYear - this.startYear);
+    const processingFunction = this.scrapeOne;
+    const processingQueue = new ProcessingQueue<ILeagueOptions>(queueLimit, processingFunction);
+
+    processingQueue.fill(updatedLeagueOptions);
+
+    return processingQueue.processItems();
   }
 }

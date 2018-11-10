@@ -1,4 +1,4 @@
-import { IConfig } from './models';
+import { IConfig, ILeagueOptions } from './models';
 
 export const config: IConfig = {
   "BASE_URL": "http://int.soccerway.com/national/",
@@ -30,3 +30,20 @@ export const config: IConfig = {
     }
   }
 };
+
+export const leagues: ILeagueOptions[] = [
+  { country: 'england', league: 'premier-league' },
+  { country: 'england', league: 'championship' },
+  { country: 'england', league: 'league-one' },
+  { country: 'england', league: 'league-two' },
+  { country: 'germany', league: 'bundesliga' },
+  { country: 'germany', league: '2-bundesliga' },
+  { country: 'germany', league: '3-liga' },
+  { country: 'germany', league: 'regionalliga' },
+  { country: 'italy', league: 'serie-a' },
+  { country: 'italy', league: 'serie-b' },
+  { country: 'spain', league: 'primera-division' },
+  { country: 'spain', league: 'segunda-division' },
+  { country: 'france', league: 'ligue-1' },
+  { country: 'france', league: 'ligue-2' }
+];
