@@ -9,10 +9,10 @@ export interface ILeaguePeriod {
   roundId: number;
 }
 
-export type DataOptions = {
+export interface DataOptions {
   country?: string;
   league?: string;
   season?: number;
   seasonId?: number;
   roundId?: number;
-};
+}

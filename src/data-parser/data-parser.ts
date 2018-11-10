@@ -2,7 +2,7 @@ import { getDOMDocument, DOM } from '../helpers';
 import { IConfig, ILeagueDataOutput, ILeagueOptions, ITeamStats } from '../models';
 
 export class DataParser {
-  private config: IConfig
+  private config: IConfig;
   private dom: DOM;
 
   constructor (config: IConfig) {
@@ -10,12 +10,12 @@ export class DataParser {
   }
 
   private getTeamStats (row: Element): { [key: string]: number } {
-    const stats: { [key: string]: number } = {}
+    const stats: { [key: string]: number } = {};
     const cells: Element[] = this.dom.getElementArray(row.children).slice(3);
 
     cells.forEach((cell: Element) => {
         const label: string = [].slice.call(cell.classList).slice(-1)[0];
-        
+
         stats[label] = parseInt(cell.innerHTML, 10);
     });
 

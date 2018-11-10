@@ -30,7 +30,7 @@ export class PeriodParser {
         return this.parseId(option.value, new RegExp(this.config.REGEX.SEASONID));
       })
       .shift();
-    
+
     return seasonId || null;
   }
 
@@ -49,13 +49,13 @@ export class PeriodParser {
     if (typeof html !== 'string') {
       throw new Error(this.config.ERR.PARSE_ID.INVALID_HTML);
     }
-    
+
     this.dom = getDOMDocument(html);
 
     const periodOptions: ILeaguePeriod = {
       seasonId: this.seasonId,
       roundId: this.roundId
-    }
+    };
 
     return new Promise((resolve) => {
       resolve(periodOptions);
