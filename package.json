@@ -4,22 +4,23 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "mocha -R spec -t 5000 ./tests/tests.js",
     "tsc": "tsc -w",
-    "postinstall": "tsc",
-    "tslint": "tslint --project . --fix",
-    "eslint": "eslint ./test",
-    "lint": "npm run eslint && npm run tslint"
+    "compile": "tsc",
+    "mocha": "mocha -R dot -t 5000 ./test/**/*.test.js",
+    "test": "npm run mocha"
   },
   "devDependencies": {
-    "babel-eslint": "^7.2.3",
-    "eslint": "^4.1.1",
-    "eslint-config-google": "^0.8.0",
-    "tslint": "^5.11.0"
-  },
-  "dependencies": {
     "@types/jsdom": "^12.2.0",
     "@types/node-fetch": "^2.1.2",
+    "babel-eslint": "^7.2.3",
+    "chai": "^4.2.0",
+    "eslint": "^4.1.1",
+    "eslint-config-google": "^0.8.0",
+    "tslint": "^5.11.0",
+    "mocha": "^5.2.0",
+    "sinon": "^7.1.1"
+  },
+  "dependencies": {
     "jsdom": "^13.0.0",
     "node-fetch": "^2.2.0",
     "typescript": "^3.1.3"
